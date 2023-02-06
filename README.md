@@ -4,7 +4,7 @@
 
 shadergraph文件可直接导入Unity 2021使用，2019需自行修改（抄）。
 
-![image](https://github.com/paploli/Unity-HDRP-Projector-CustomPass/blob/main/SceneVeiw.jpg?raw=true)
+![image](https://github.com/paploli/Unity-HDRP-Projector-CustomPass/blob/main/SceneView.png?raw=true)
 
 * 修改投影图像方向
 
