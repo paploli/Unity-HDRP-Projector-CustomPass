@@ -81,7 +81,18 @@ public class Projector : MonoBehaviour
         //MVP MV * P.
         var world2View = Matrix4x4.TRS(transform.position, transform.rotation, new Vector3(aspectRatio, 1.0f, 1.0f)).inverse;
         var projection = Matrix4x4.Perspective(fieldOfView, 1.0f, nearClipPlane, farClipPlane);
+
+        //https://docs.unity.cn/cn/current/ScriptReference/Matrix4x4.Perspective.html
+        //返回矩阵嵌入了 z 翻转操作，其用途是取消摄像机视图矩阵执行的 z 翻转。
+        //如果视图矩阵是单位矩阵或某种不执行 z 翻转的自定义矩阵，
+        //请考虑将投影矩阵 的第三列（即 m02、m12、m22 和 m32）乘以 - 1。
+        for (int i = 0; i < 4; i++)
+        {
+            projection[i, 2] = -projection[i, 2];
+        }
+
         var projectorMatrix = projection * world2View;
+
 
         /*Projector Clip Matrix (Ortho for Image Attenuate)*/
         //P   Calculate Ortho Matrix. (Filp Z)
